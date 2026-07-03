@@ -1,0 +1,271 @@
+/*----------------------------------------*/
+/*  INDEX PAGE STYLE REFRESH (trial)
+    Modern sans-serif type + fresh color palette.
+    Loaded after main.css so it overrides on this
+    page only — main.css itself is untouched.
+/*----------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+:root {
+  /* typography */
+  --tp-ff-body: 'Inter', sans-serif;
+  --tp-ff-heading: 'Poppins', sans-serif;
+  --tp-ff-p: 'Inter', sans-serif;
+  --tp-ff-jost: 'Inter', sans-serif;
+
+  /* palette — Primary: orange, Secondary: cream */
+  --tp-primary: #F97316;
+  --tp-secondary: #FFF7ED;
+  --tp-heading-primary: #1F2937;
+  --tp-heading-secondary: #F97316;
+  --tp-text-body: #4B5563;
+  --tp-text-2: #374151;
+  --tp-text-3: #6B7280;
+  --tp-theme-1: #1F2937;
+  --tp-theme-2: #F97316;
+  --tp-theme-3: #0EA5E9;
+  --tp-theme-4: #1F2937;
+  --tp-theme-5: #DC2626;
+  --tp-grey-1: #FFF7ED;
+  --tp-grey-8: #FFF7ED;
+  --tp-border-1: #FBE1C7;
+  --tp-border-3: #FBE1C7;
+}
+
+body {
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--tp-heading-primary);
+  letter-spacing: -0.02em;
+}
+
+/* hardcoded font-families in main.css that don't read the variables */
+.tp-breadcrumb__title,
+.tperror__title,
+.tpslider__title,
+.tpslider__sub-title,
+.category__title,
+.tpproduct__title {
+  font-family: var(--tp-ff-heading);
+}
+
+.tpsection__sub-title,
+.section__sub-title {
+  font-family: var(--tp-ff-body);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tp-btn-2:hover {
+  background-color: #C2410C;
+}
+
+/* softer, more modern corners + depth on cards */
+.category__item {
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(31, 41, 55, 0.06);
+  transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+.category__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(31, 41, 55, 0.1);
+}
+
+.tpproduct__thumb {
+  border-radius: 14px;
+}
+.tpproduct__content {
+  border-radius: 0 0 14px 14px;
+}
+
+.tpblog__thumb {
+  border-radius: 14px 14px 0 0;
+}
+
+.tp-btn,
+.tp-btn-2,
+.tp-btn-3,
+.tp-btn-4,
+.whight-btn {
+  border-radius: 8px;
+}
+
+/* text logo (no logo image asset yet) */
+.site-logo {
+  font-family: var(--tp-ff-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--tp-heading-primary);
+}
+.site-logo span {
+  color: var(--tp-heading-secondary);
+}
+
+.tpproduct__desc {
+  font-size: 13px;
+  color: var(--tp-text-3);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+/* equal-height product cards — description lengths vary, so stretch
+   every card in a row to the tallest and pin price to the bottom */
+.tpproduct-active .swiper-slide,
+.tpvegetable-active .swiper-slide {
+  height: auto;
+  display: flex;
+}
+.tpproduct {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.tpproduct__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.tpproduct__desc {
+  flex: 1;
+}
+.tpproduct__price {
+  margin-top: auto;
+}
+.tpproduct__btn {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  padding: 9px 10px;
+  border-radius: 30px;
+  background-color: var(--tp-heading-secondary);
+  color: var(--tp-common-white);
+  font-family: var(--tp-ff-heading);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition: background-color 0.2s ease-out;
+}
+.tpproduct__btn:hover {
+  background-color: #C2410C;
+  color: var(--tp-common-white);
+}
+
+/* banner cards: dark scrim so text stays readable over any photo */
+.tpbanner__content {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.tpbanner__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0) 100%);
+}
+.tpbanner__content > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* vegetable feature photo (plain photo, not a floating cut-out) */
+.tpfeature__photo {
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(31, 41, 55, 0.12);
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* hero photo (plain photo, not a floating cut-out) */
+.tpslider__thumb-img {
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(31, 41, 55, 0.15);
+  object-fit: cover;
+}
+
+/* fruit countdown banner: scrim for legibility over the new photo */
+.tpcoundown__bg {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.tpcoundown__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.25) 55%, rgba(0, 0, 0, 0.05) 100%);
+}
+.tpcoundown__bg .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* product-details page: a few hardcoded (non-variable) colors */
+.product__details-price {
+  color: var(--tp-heading-secondary);
+}
+.product__details-btn a:hover {
+  background-color: #C2410C;
+}
+.product__details-btn button {
+  font-family: var(--tp-ff-jost);
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--tp-common-white);
+  background-color: var(--tp-heading-secondary);
+  padding: 13px 40px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+.product__details-btn button:hover {
+  background-color: #C2410C;
+}
+.tpdetails__enquiry-title {
+  font-family: var(--tp-ff-heading);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--tp-heading-primary);
+}
+.enquiry-form__status {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: #15803D;
+}
+.enquiry-form__status--error {
+  color: #DC2626;
+}
+.product__details-btn button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.product__details-quantity b {
+  color: var(--tp-heading-primary);
+}
+.tpdetails__product {
+  border-radius: 14px;
+}
+.tpproduct-details__thumb-img {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(31, 41, 55, 0.12);
+}
+
+/* footer: black + orange, with breathing room at the top */
+.tpfooter__area {
+  background-color: #000000;
+}
+.tpfooter__top {
+  padding-top: 60px;
+}
+.tpfooter__widget-title {
+  color: var(--tp-heading-secondary);
+}
